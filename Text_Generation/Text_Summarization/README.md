@@ -15,7 +15,7 @@
    * Abstractive summarizations can be subject to errors the same as extractive because the text is also based on the underlying model and its training data.
   
 References for Extractive vs. Abstractive Summarization Techniques
-* (Mastring Text Summarization with SUMY)[https://www.geeksforgeeks.org/mastering-text-summarization-with-sumy-a-python-library-overview/]
+* (Mastering Text Summarization with SUMY)[https://www.geeksforgeeks.org/mastering-text-summarization-with-sumy-a-python-library-overview/]
 * (6 Useful Text Summarizaton Algorithms)[https://medium.com/@sarowar.saurav10/6-useful-text-summarization-algorithm-in-python-dfc8a9d33074]
 * (bert-extractive-summarizer repo)[https://pypi.org/project/bert-extractive-summarizer/]
 * (BART Models for text summarization)[https://www.digitalocean.com/community/tutorials/bart-model-for-text-summarization-part1]
