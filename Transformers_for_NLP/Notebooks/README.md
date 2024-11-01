@@ -12,4 +12,6 @@
    * The output will be evaluated for quality of text generation using the METEOR score. 
 
 
-3. 
+3. Custom Trained DistilBERT model "food not food classifier"
+  * Project from Mr. Daniel Bourke's ZTM course.
+  * Full end to end project fine tuning a model from hugging face on custom dataset along with deployment to HF hub and Gradio demo app. 
