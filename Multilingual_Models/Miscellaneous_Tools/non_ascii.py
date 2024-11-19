@@ -1,4 +1,5 @@
 ## function that transforms non ascii and unicode characters to ascii
+## This is a good article on encoding and decoding characters in python: https://realpython.com/python-encodings-guide/
 
 def transform_non_ascii_to_ascii(text):
   """Transforms non-ASCII characters in a string to their ASCII equivalents using HTML entities.
