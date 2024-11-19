@@ -30,16 +30,96 @@ import chardet
 def decode_non_english(encoded_string):
     """Decodes non-English characters in a string."""
 
-    # Detect the encoding
-    encoding = chardet.detect(encoded_string)['encoding']
+    # Check if the input is already a string (decoded) or is None
+    if isinstance(encoded_string, str) or encoded_string is None:
+        return encoded_string  # Return as is if it's already decoded or None
 
-    # Decode the string using the detected encoding
-    decoded_string = encoded_string.decode(encoding)
+    # Check if the input is a float and convert to string if necessary
+    if isinstance(encoded_string, float):
+        encoded_string = str(encoded_string)
 
-    return decoded_string
+    # Check if the string is actually encoded (contains non-ASCII characters)
+    try:
+        encoded_string.encode('ascii')  # Try encoding to ASCII
+        # If successful, it's already ASCII and doesn't need decoding
+        return encoded_string
+    except UnicodeEncodeError:
+        # If it fails, it needs decoding
+        encoding = chardet.detect(encoded_string.encode())['encoding']
+        decoded_string = encoded_string.decode(encoding, errors='ignore')  # Handle potential decoding errors
+        return decoded_string
+
+
+## example usage
+df['message_decoded'] = df['message'].apply(encoded_string)
+
+
+==========================================
+## you can also use Pydantic to do this --> note this will leave empty strings if a row value cant be decoded. 
+from typing import Union
+from pydantic import BaseModel, field_validator ## V2 pydantic field_validator
+
+## Pydantic class to decode string
+class DecodedString(BaseModel):
+    text: str
+
+    @field_validator('text', mode="before")
+    def decode_if_needed(cls, v):
+        """Decodes non-English characters if necessary."""
+        if isinstance(v, bytes):
+            encoding = chardet.detect(v)['encoding']
+            try:
+                return v.decode(encoding)
+            except UnicodeDecodeError:
+                # Fallback to UTF-8 if detected encoding fails
+                return v.decode('utf-8', errors='ignore')
+        return v
+
+def decode_non_english_pydantic(text: Union[str, bytes]) -> str:
+    """Decodes non-English characters using Pydantic."""
+    # Replace nan with an empty string before passing to Pydantic
+    if pd.isna(text):  # Use pd.isna to check for nan
+        text = ''
+    return DecodedString(text=text).text
 
 # Example usage
-encoded_text = b'\xc3\xa9cole'
-decoded_text = decode_non_english(encoded_text)
+df['message_decoded_pydantic'] = df['message'].apply(decode_non_english_pydantic)
+df['message_decoded_pydantic'].head())
 
-print(decoded_text)  # Output: école
+
+------------------------------------------
+## Another approach using Pydantic ---> however this will keep the nan values if they cant be decoded from non-english characters
+from typing import Union
+from pydantic import BaseModel, field_validator, ValidationError
+
+class DecodedString(BaseModel):
+    text: str
+
+    @field_validator('text', mode="before")
+    def decode_if_needed(cls, v):
+        """Decodes non-English characters if necessary."""
+        if isinstance(v, bytes):
+            encoding = chardet.detect(v)['encoding']
+            try:
+                return v.decode(encoding)
+            except UnicodeDecodeError:
+                # If decoding fails, return nan
+                return float('nan')  
+        return v
+
+def decode_non_english_pydantic(text: Union[str, bytes]) -> str:
+    """Decodes non-English characters using Pydantic."""
+    
+    try:
+        # Attempt to decode using the Pydantic model
+        decoded_text = DecodedString(text=text).text  
+    except ValidationError:
+        # If validation fails (e.g., decoding error), return nan
+        return float('nan') 
+    
+    return decoded_text 
+
+# Example usage
+df['message_decoded_pydantic'] = df['message'].apply(decode_non_english_pydantic)
+df['message_decoded_pydantic'].head()
+
