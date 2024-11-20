@@ -28,7 +28,7 @@
 * It's performance on the MMLU benchmark blows away other models such as Llama.
 
 * Languages it was trained on:
-<img width="359" alt="Screenshot 2024-11-19 at 8 07 39 AM" src="https://github.com/user-attachments/assets/3be5c6c6-34cb-4582-a6df-913c3a5b23c6">
+![image](https://github.com/user-attachments/assets/265897c8-4a79-4e0d-b373-a54745a9b9fb)
 
 * Performance on MMLU beats other LLMs
 ![image](https://github.com/user-attachments/assets/7daf173f-80b7-4b6d-af5b-f5699128b3da)
