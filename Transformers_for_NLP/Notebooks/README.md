@@ -14,4 +14,9 @@
 
 3. Custom Trained DistilBERT model "food not food classifier"
   * Project from Mr. Daniel Bourke's ZTM course.
-  * Full end to end project fine tuning a model from hugging face on custom dataset along with deployment to HF hub and Gradio demo app. 
+  * Full end to end project fine tuning a model from hugging face on custom dataset along with deployment to HF hub and Gradio demo app.
+
+
+
+# Pipelines
+* There is a separate folder within the **Notebooks** folder that runs through various pipelines using transformer models on hugging face for various tasks.
