@@ -101,7 +101,8 @@ F1 score is the harmonic mean of Precision and Recall
 * Value, Key and Query Vectors are important building blocks of transformer models as we see below:
 
 ![image](https://github.com/user-attachments/assets/746cfea8-9d44-4c8e-8810-23daca36ffed)
-Source: "Attention is All You Need", 2018
+
+* Source: "Attention is All You Need", 2018
 
 ## How does this work? 
 * Let’s say you have a sentence or phrase:
