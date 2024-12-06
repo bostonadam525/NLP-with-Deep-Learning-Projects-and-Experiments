@@ -55,9 +55,11 @@ Decoder
 1. Variable length sentences + fixed-length memory (single hidden states with compressed information)
 2. As sequence size increases —> model performance decreases!
 3. Information Bottleneck occurs as information is compressed into final decoder output
+4. **"Vanishing Gradients" Result**
+   * This is a situation where the gradients used to update network weights during backpropagation become extremely small as they travel through the layers, particularly in the earlier layers of a network, hindering the learning process and making it difficult for the model to **capture long-range dependencies** between input and output sequences
 
 
-# How to overcome issuses with Seq2Seq?
+## How to overcome issuses with Seq2Seq?
 1. You can pass a concatenation of all the hidden states from the encoder to the decoder block (e.g. mean pooling)
   * Problem with this is LARGE MEMORY CONSUMPTION
 2. Focus attention in the right place
@@ -68,6 +70,56 @@ Decoder
 
 Example (souce: udemy):
 ![image](https://github.com/user-attachments/assets/a61b0c49-d5c3-4007-b137-86e07f4fbe86)
+
+* Original paper on Attention was published in 2015 (not the transformer one that was in 2018)
+  * paper: Neural Machine Translation By Jointly Learning to Align and Translate
+  * Link: https://arxiv.org/abs/1409.0473
+* Takeaways
+  * As sentence length increases —> Traditional Seq2Seq model loses information significantly
+  * As sentence length increases —> Seq2Seq with Attention maintains the same performance and virtually no information loss. 
+    * Can focus on specific hidden states during this!
+
+* Performance metrics:
+1) BLEU Score — Bi-lingual evaluation understudy (usually translation metric)
+Precision Focused — the “correctness” of the positive predictions made by the model.
+2) ROUGE Score — Recall oriented understudy for gisting evaluation (usually summarization metric)
+Recall Focused — the “ACTUAL” positive cases the model correctly identifies.
+3) Combine BLEU + ROUGE —> F1 Score = 2 * ((P*R) / (P+R))
+F1 score is the harmonic mean of Precision and Recall
+
+## How to use all the hidden states?
+1. Add all hidden states together (pointwise addition with normalization)
+  * The problem with this is there is no weight is applied.
+    * Equation: c = h1 + h2 + h3 + h4
+  * To solve this you pass the previous decoder hidden state. 
+    * Equation: c = w1h1 + w2h2 + w3h3 + w4h4
+
+
+
+# Queries, Keys, Values
+* We should first remember the 2018 paper "Attention is All You Need" the original Transformers paper, which you can read here:  https://arxiv.org/abs/1706.03762
+* Value, Key and Query Vectors are important building blocks of transformer models as we see below:
+
+![image](https://github.com/user-attachments/assets/746cfea8-9d44-4c8e-8810-23daca36ffed)
+Source: "Attention is All You Need", 2018
+
+## How does this work? 
+* Let’s say you have a sentence or phrase:
+  * “It’s time for coffee”
+* Now let’s say you are searching for a YouTube video, there is:
+  * Query —> Search term
+  * Key —> Videos Title
+  * Value —> Videos Content
+* Attention is calculated using the lookup table. 
+  * Cosine Similarity is used to match the key, query, and value
+* Equation for Attention is:
+  * Attention (Q, K, V) = Softmax ((Q*KT)/ np.sqrt(dk)) * V
+    * d = dimension of key vector
+* Queries, Keys, Values with weights
+  * Equation: q1w1 + q1w2 + q1w3 + q1w4
+  * Note: These are attention weights
+
+
 
 
 
