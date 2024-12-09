@@ -171,4 +171,9 @@
 
 
 # References
-* (Sheehan, D. Visualising Activation Functions in Neural Networks)[https://dashee87.github.io/deep%20learning/visualising-activation-functions-in-neural-networks/]
+* [Giordano, 2020. 7 tips to choose the best optimizer](https://towardsdatascience.com/7-tips-to-choose-the-best-optimizer-47bb9c1219e)
+* [Goplani, 2023. Activation functions, Loss functions & Optimizers.](https://medium.com/@deeksha.goplani/activation-functions-loss-functions-optimizers-6bd0316898ae)
+* [Huynh, 2023. Understanding Loss Functions for Classification](https://medium.com/@nghihuynh_37300/understanding-loss-functions-for-classification-81c19ee72c2a)
+* Nakamura, 2021. Learning-Rate Annealing Methods for Deep Neural Networks. Electronics 2021, 10(16), 2029; https://doi.org/10.3390/electronics10162029
+* [Sheehan, D. Visualising Activation Functions in Neural Networks](https://dashee87.github.io/deep%20learning/visualising-activation-functions-in-neural-networks/)
+* Wu et al, 2021. DIRECTION MATTERS: ON THE IMPLICIT BIAS OF STOCHASTIC GRADIENT DESCENT WITH MODERATE LEARNING RATE. arXiv:2011.02538v2  [cs.LG]  29 Mar 2021
