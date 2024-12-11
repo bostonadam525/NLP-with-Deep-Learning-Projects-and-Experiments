@@ -11,6 +11,9 @@
 5. locations
 6. ...etc...
 
+## Spacy `displaCy Entity Visualization`
+* This is a good demo that spacy put together to test out NER modeling: https://demos.explosion.ai/displacy-ent
+
 
 # Tokens and Tags in NER Models
 * NER modeling is also most commonly known as `**Token Classification**.
@@ -55,3 +58,42 @@ There are 7 known tagging schemes:
 * This is an excellent review chart of the various NER modeling approaches which again comes from the above paper by Borelli et al. 2024
 ![image](https://github.com/user-attachments/assets/99c955cf-fd2a-4643-8232-5966b355ea8b)
 
+
+
+
+# General NER Modeling Workflow
+1. Text input
+  * NER begins with text which can be word, sentence, paragraph, document or larger corpora. 
+
+2. Tokenization
+  * Input text is split into individual words or tokens (tokenization).
+  * Tokenization is MOST important in NER models because it works on a token by token level. 
+
+3. Entity Recognition
+  * Tokenized text is analyzed to identify "spans" of tokens that correspond to named entities.
+  * NER systems use various techniques such as:
+    * rule-based approaches
+    * machine learning models
+      * conditional random fields
+      * deep learning
+    * combination of methods
+
+4. Entity/Token Classification
+  * After entities are recognized they are then classified into predefined categories of choice such as:
+    * person
+    * organization
+    * location
+    * date
+    * number
+    * product
+    * company
+    * ...etc...
+  * The purpose of these categories is to help organize and provide context to the recognized entities. 
+
+5. Output
+   * Final output of NER model is structured representation of the original text with identified named entities and their respective categories. 
+   * The output can then be used for various purposes such as but not limited to:
+      * information extraction
+      * content summarization
+      * sentiment analysis
+      * etc...
