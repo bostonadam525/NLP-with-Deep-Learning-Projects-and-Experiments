@@ -58,6 +58,19 @@
 
 * A good list of NLI NLP resources: https://medium.com/@moscantonio/list/nli-nlp-272baac1156a
 
+#### MedNLI
+* MedNLI is one of the most popular textual entailment datasets out there.
+* It is easily accessible through PhysioNet.
+* Background
+  * MednLI is a dataset annotated by doctors, performing a natural language inference tasks, grounded in the medical history of patients.
+  * The authors present strategies to:
+       * 1) leverage transfer learning using datasets from the open domain, (e.g. SNLI), and
+       * 2) incorporate domain knowledge from external data and lexical sources (e.g. medical terminologies).
+  * Their results demonstrate performance gains using both strategies.
+ 
+* MedNLI Resources:
+  * github: https://jgc128.github.io/mednli/
+  * Hugging Face dataset card: https://huggingface.co/datasets/bigbio/mednli
 
 ### Other Techniques to Measure Text Generation
 * 1) **CONNER, a COmpreheNsive kNowledge Evaluation fRamework**
