@@ -72,6 +72,13 @@
   * github: https://jgc128.github.io/mednli/
   * Hugging Face dataset card: https://huggingface.co/datasets/bigbio/mednli
 
+#### Incorporating Domain Knowledge into Medical NLI using Knowledge Graphs
+* This is a 2019 paper by Sharma et al.
+  * arxiv paper: https://arxiv.org/abs/1909.00160
+* The authors explored how to incorporate structured domain knowledge, using an ontology/knowledge graph (the UMLS), for the Medical NLI task.       * Specifically, they experimented with fusing embeddings obtained from knowledge graphs with the state-of-the-art approaches for NLI task (ESIM model).
+  * They also experimented with fusing the domain-specific sentiment information for the task. Experiments conducted on MedNLI dataset clearly show that this strategy improves the baseline BioELMo architecture for the Medical NLI task.
+
+
 ### Other Techniques to Measure Text Generation
 * 1) **CONNER, a COmpreheNsive kNowledge Evaluation fRamework**
       * This is a novel technique proposed by Chen at al. in a 2023 arxiv paper --> link to paper: https://arxiv.org/abs/2310.07289
@@ -152,6 +159,44 @@
    * The LongHealth benchmark challenges LLMs with 400 multiple-choice questions categorized into information extraction, negation, and sorting, providing a robust assessment tool for LLMs in the healthcare context.
    * The goal of this specific technique is to address the issues of long context windows and distributed relevant information.
    * Link to repo: https://github.com/kbressem/LongHealth
+
+
+### MedSyn
+* This is a recent paper published on arxiv in August 2024 by Kumichev et al.
+  * Link to paper: https://arxiv.org/abs/2408.02056
+  * github: https://github.com/milteam/MedSyn
+* The purpose of the authors work was to introduce MedSyn, a novel medical text generation framework that integrates LLMs with a Medical Knowledge Graph (MKG).
+  * They used a MKG to sample prior medical information for the prompt and generate synthetic clinical notes with GPT-4 and fine-tuned LLaMA models.
+  * They assessed the benefit of synthetic data through application in an ICD code prediction task.
+  * Results of their research indicates:
+    * **synthetic data can increase the classification accuracy of vital and challenging codes by up to 17.8% compared to settings without synthetic data.**
+    * ** In addition, to provide new data for further research in the healthcare domain, the authors produced the largest open-source synthetic dataset of clinical notes for the Russian language, comprising over 41k samples covering 219 ICD-10 codes.**
+* **This framework could be useful for synthetic medical note generation in any language but also as a potential framework for evaluating and parsing real-world medical notes and synthetic generated medical notes.**
+
+* Framework from the Kumichev et al. paper:
+![image](https://github.com/user-attachments/assets/b17ef286-6e37-45d1-8bfa-d7df3f184f2c)
+
+
+### Additional Techniques related to MedSyn
+1. **BioLORD**
+   * BioLORD introduces semantic context to enrich biomedical representations.
+   * The authors pair concepts with texts, which can be either their definitions or descriptions.
+         * The definitions are sourced directly from the UMLS ontology, but these are available for only ~5% of the concepts.
+         * To extend the semantic coverage for the other concepts, the authors generate simple descriptions based on the concept-to-concept relations present in the UMLS knowledge graph.
+         * example: `Template: “[more-generic-concept] which [has-relationship-with] [related-concept]”​`
+            * The concepts and their respective contexts are then used as positive pairs in a contrastive learning setting, where positive pairs are attracted in the embedding space, and negative ones are repelled.
+            * A detail: one concept may have different names. Thus, there may be more than one pair referring to the same concept. Ideally, these will all end up close in the trained embedding space.
+   * Figure 1 from the original paper:
+![image](https://github.com/user-attachments/assets/c8675e51-6b73-40bf-9d57-bf15bc67e7f1)
+
+   * BioLORD Resources
+      * (Remy et al. 2022 - BioLORD: Learning Ontological Representations from Definitions (for Biomedical Concepts and their Textual Descriptions)[https://arxiv.org/abs/2210.11892]
+      * (Remy et al. 2023 - BioLORD-2023: Semantic Textual Representations Fusing LLM and Clinical Knowledge Graph Insights)[https://arxiv.org/abs/2311.16075]
+      * (BioLORD: Contrastive learning for biomedical concepts)[https://hossboll.medium.com/biolord-contrastive-learning-for-biomedical-concepts-32c453f7a830]
+      * Hugging Face - BioLORD Dataset: https://huggingface.co/datasets/FremyCompany/BioLORD-Dataset
+      * Hugging Face - BioLORD Sentence Transformers model: https://huggingface.co/FremyCompany/BioLORD-2023-S
+
+
 
 
 
