@@ -48,9 +48,19 @@
 * There are various NLI approaches using datasets and models pre-trained and fine-tuned on these tasks:
   * 1. SNLI
        * SNLI or Stanford Natural Language Inference corpus contains around 550K hypothesis/premise pairs. All the premises are image captions from Flickr30K corpus. All the hypothesis were crowd sourced through crowd workers
-  * 2. MultiNLI
+  * 2. ***MultiNLI***
        * This is based off a famous dataset from NYU: https://huggingface.co/datasets/nyu-mll/multi_nli
        * A model that has been specifically trained on this dataset is the `roberta-large-mnli` from Meta/Facebook: https://huggingface.co/FacebookAI/roberta-large-mnli
+       * How this works:
+         * 1. RoBERTa (specifically "roberta-large-mnli"), is pre-trained on the MultiNLI (Multi-Genre Natural Language Inference) dataset. This model is very good at **understanding relationships between sentences.**
+         * 2. Coherence Metric - its important to incorporate this metric which uses the "entailment" score as a proxy for coherence. In NLI tasks, **entailment indicates that the second sentence logically follows from the first, which is thus interpreted as a measure of coherence.**
+         * 3. Sentence-level Analysis: By evaluating pairs of consecutive sentences using the NLI approach, we are thus able to assess local coherence throughout a document of any length. 
+         * 4. Flexibility - you don't have to use `roberta-large-mnl`, this is just a popular model. You can fine-tune pretty much any tranformer model using an NLI dataset. 
+         * 5. Output - The evaluation output of these models will return a single float value representing the overall coherence of the text you are evaluating. 
+      * This evaluation approach provides a **quantitative measure** of **text generation quality**, focusing on the **logical flow and consistency between consecutive sentences**.
+           * It's an excellent use case for natural language inference models to assess document/text coherence, which is particularly useful for **evaluating synthetic text generation.**
+
+
   * 3. ANLI
        * ANLI or adversial natural language inference has more than 162K hypothesis/premise pairs. The premises are sourced from diverse sources. The hypothesis were crowd sources and written with the goal of fooling the SOTA models, hence the name adversial.
        * A good example of a model fine-tuned for this task is: `MoritzLaurer/DeBERTa-v3-base-mnli-fever-anli`
@@ -236,3 +246,27 @@
     * This minimizes the need for large amounts of labeled data.
 
 
+# Unit Testing Evaluations
+* Unit testing is common in Data Science, Machine Learning, and Software Engineering.
+* There are many popular and useful frameworks to evaluate text generation by LLMs and transformer models. You can certainly use open source out of the box frameworks with ease.
+
+## **Pytest** is one of the most popular and commonly used testing frameworks and can be utilized for evaluating LLM outputs of all types.
+  1. You can test LLM output consistency.
+  2. Compare performance of prompts and models.
+     * This is an excellent blog post about this approach: (Pytest is All You Need)[https://arjunbansal.substack.com/p/pytest-is-all-you-need]
+
+## Llama-2 Unit Testing
+* There are some fine tuned LLMs such as llama-2 on huggingface that can be used specifically for unit testing.
+* `h2oai/llama2-0b-unit-test` is an example here: https://huggingface.co/h2oai/llama2-0b-unit-test
+
+## Meta's TestGen LLM
+* TestGen-LLM is able to evaluate unit tests and identify immediate areas for improvements. It is able to do this through its understanding of common testing patterns on which it has been pre-trained.
+* However, generating unit tests alone is insufficient for proper code coverage. Meta also implemented safeguards within TestGen-LLM to ensure the effectiveness of unit tests it generates. These safeguards, referred to as **filters**, act as a quality control mechanism. They eliminate suggestions that:
+   * 1. wouldn't compile
+   * 2. fail consistently, or
+   * 3. fail to actually improve code coverage (suggestions that are already covered by other tests).
+    
+* These are a few excellent resources about TestGen LLM
+  * Original arxiv paper: (Automated Unit Test Improvement using Large Language Models at Meta)[https://arxiv.org/abs/2402.09171]
+  * (How to Use AI to Automate Unit Testing with TestGen-LLM and Cover-Agent)[https://www.freecodecamp.org/news/automated-unit-testing-with-testgen-llm-and-cover-agent/#heading-metas-testgen-llm]
+  * (Meta's new LLM-based test generator is a sneak peek to the future of development)[https://read.engineerscodex.com/p/metas-new-llm-based-test-generator]
