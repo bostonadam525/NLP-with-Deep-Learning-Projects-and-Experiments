@@ -140,6 +140,34 @@
 
 
 
+## TinyBERT 
+* Distilling BERT for Natural Language Understanding (NLU)
+* Original 2019 paper by Jiao et al: https://arxiv.org/abs/1909.10351
 
+
+
+### What is TinyBERT?
+* Created to reduce size and improve speed of BERT while maintaining high performance on NLP tasks. 
+* Uses a unique Transformer distillation method to effectively transfer knowledge from a larger BERT model to smaller TinyBERT model
+* Employs a 2 stage learning process involving general distillation from a non-fine-tuned BERT and task-specific distillation from a fine-tuned BERT.
+   * This enhances both general and task-specific capabilities. 
+* Model has only 4 layers and achieves the following:
+   * 96.8% of BERTBASE performance on GLUE benchmark 
+   * 7.5 times smaller than BERTBASE
+   * 9.5 times faster for inference than BERTBASE
+
+
+
+### Compare and Contrast 3 distilled BERT models
+1. All 3 models (TinyBERT, DistilBERT, MobileBERT) goal was to reduce size of original BERT model.
+   * Allowed for enhanced efficiency
+   * Allowed for deployment on mobile devices and devices without need for GPU (CPU and low memory support)
+2. Each model uses “knowledge distillation techniques” to transfer knowledge from “Teacher” to “Student”
+   * Transfer learning — knowledge transfer from LARGE model to SMALL model
+   * Preserves teachers abilities (large model)
+   * Reduces computational demands
+3. All 3 models maintain the ability to be fine-tuned for various downstream NLP tasks
+   * Very versatile across different apps without task-specific pre-training. 
+4. All 3 models despite being SMALLER maintain similar performance to original BERT on benchmarks. 
 
 
