@@ -62,7 +62,8 @@
 
 ### DistilBERT Loss Functions
 * During training, DistilBERT learns from BERT and updates its weights via these 3 loss functions:
-    1. **Masked language modeling (MLM) loss**
+
+1. **Masked language modeling (MLM) loss**
         * Higher SoftMax Temperature value == softer distribution 
             * As T value increases —> variation between token probabilties is smaller (e.g. T=1) —> Probabilistic
             * Higher variation in probability distribution when temperature is less (e.g. T=0.1) —> Deterministic
@@ -80,10 +81,11 @@
 
 
 
-    2. **Distillation Loss**
+2. **Distillation Loss**
         * Prob distribution of Teacher vs. Student compared via cross-entropy
 
-    3. **Similarity Loss**
+
+3. **Similarity Loss**
         * Embeddings of Teacher and Student computed together and similarity compared —> weights updated
 
 
