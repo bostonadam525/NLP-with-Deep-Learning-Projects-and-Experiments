@@ -96,3 +96,50 @@
 
 
 
+## MobileBERT
+* Compact Task-Agnotic BERT for Resource Limited Devices
+* Original 2020 arixiv paper: https://arxiv.org/abs/2004.02984
+
+
+
+### What exactly is mobileBERT
+* Compresses and accelerates BERT
+   * Allows deployment on mobile devices with limited resources
+   * Maintains same high performance
+* Versatile and Task-agnostic model
+   * You can fine-tune this model for pretty much any NLP task without task-specific modifications. 
+* “Thin” version of BERTLarge to reduce computation load:
+   * Bottleneck structures
+   * Balances self-attention
+   * Feed-forward networks 
+* Transfer learning was used to train model
+   * knowledge transfer from BERTLarge (IB-BERT) model
+   * Ensured smaller model retains high peformance 
+* Model is 4.3 smaller and 5.5 times faster than BERTBASE
+   * Benchmarks performed well on:
+      * GLUE
+      * SQuAD
+
+
+### Parameter Settings of MobileBERT
+* Encoder comparison
+
+1. BERTLARGE —> 1024
+2. BERTBASE —> 768
+3. MobileBERT 
+   * Embedding factorization was used
+      * Embedding dimension reduced to 128
+      * Then 1D convolution compression applied with kernel size of 3 on raw token embeddings
+   * 512 dimensional output
+   * Overall Parameters
+      * BERTLARGE —> 334M
+      * BERTBASE —> 109M
+      * MobileBERT —> 25.3M
+      * MobileBERTtiny —> 15.1M
+
+
+
+
+
+
+
