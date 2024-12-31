@@ -57,6 +57,8 @@
 2. Student model (DistilBERT) trained to predict probability distribution of vocabulary from teacher model (BERT) using the same input text
 3. Student learns to replicate attention patterns of teacher
 4. In training, optimization includes --> temperature scaling applied to Softmax outputs
+5. Token type embeddings removed, Pooler removed --> Can’t perform next sentence predictions
+6. Same corpus used in training: English Wikipedia and Toronto Book Corpus
 
 
 
