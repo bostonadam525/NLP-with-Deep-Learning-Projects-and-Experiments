@@ -64,14 +64,14 @@
 * During training, DistilBERT learns from BERT and updates its weights via these 3 loss functions:
 
 1. **Masked language modeling (MLM) loss**
-        * Higher SoftMax Temperature value == softer distribution 
-            * As T value increases —> variation between token probabilties is smaller (e.g. T=1) —> Probabilistic
-            * Higher variation in probability distribution when temperature is less (e.g. T=0.1) —> Deterministic
-        * If you recall, **Temperature** is a hyperparameter of LSTMs (and neural networks in general) used to control the randomness of predictions by scaling the logits before applying a softmax function.
-        * Temperature scaling has been widely used to improve performance for NLP tasks that utilize the Softmax decision layer.
-        * Temperature scaling increases the randomness of the probability distribution.
-            * This characterizes the entropy of the probability distribution used for sampling, in other words, it controls how surprising or predictable the next word will be.
-            * The scaling is done by dividing the logit vector by a value T, which denotes the temperature, followed by the application of softmax. source: [Softmax Temperature](https://medium.com/@harshit158/softmax-temperature-5492e4007f71)
+ * Higher SoftMax Temperature value == softer distribution 
+ * As T value increases —> variation between token probabilties is smaller (e.g. T=1) —> Probabilistic
+ * Higher variation in probability distribution when temperature is less (e.g. T=0.1) —> Deterministic
+ * If you recall, **Temperature** is a hyperparameter of LSTMs (and neural networks in general) used to control the randomness of predictions by scaling the logits before applying a softmax function.
+   * Temperature scaling has been widely used to improve performance for NLP tasks that utilize the Softmax decision layer.
+   * Temperature scaling increases the randomness of the probability distribution.
+   * This characterizes the entropy of the probability distribution used for sampling, in other words, it controls how surprising or predictable the next word will be.
+   * The scaling is done by dividing the logit vector by a value T, which denotes the temperature, followed by the application of softmax. source: [Softmax Temperature](https://medium.com/@harshit158/softmax-temperature-5492e4007f71)
 
 
 
@@ -82,11 +82,11 @@
 
 
 2. **Distillation Loss**
-        * Prob distribution of Teacher vs. Student compared via cross-entropy
+ * Prob distribution of Teacher vs. Student compared via cross-entropy
 
 
 3. **Similarity Loss**
-        * Embeddings of Teacher and Student computed together and similarity compared —> weights updated
+ * Embeddings of Teacher and Student computed together and similarity compared —> weights updated
 
 
 * Final loss calculation
