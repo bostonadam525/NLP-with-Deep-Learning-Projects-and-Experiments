@@ -122,6 +122,35 @@ F1 score is the harmonic mean of Precision and Recall
 
 
 
+# Scaled Dot Product Attention
+* This is the multi-head attention layer that consists of several attention layers running in parallel
+These are the multiple values and layers of Q,K,V
+
+* Standard Transformer architecture is the following: 
+
+1. Queries, Keys, Values —> Vector space
+2. Matrix Multiplication 
+3. Query and Key MatMul
+4. Scaling
+5. Masking (optional)
+6. SoftMax 
+7. Output layer with MatMul for final --> Q, K, V
+
+* Depiction of above from the original paper:
+
+![image](https://github.com/user-attachments/assets/caf48838-a68c-44af-b054-7ef6633fdc5a)
+
+* This is an excellent review of the scaled dot product attention mechanism: https://medium.com/@vmirly/tutorial-on-scaled-dot-product-attention-with-pytorch-implementation-from-scratch-66ed898bf817
+
+* Alignment Weights
+   * Concept is that similar words have LARGE weights
+
+
+* Flexible Attention
+   * This works for languages with different grammar structures. 
+   * Attention focuses where it needs to. 
+   * Does NOT depend on the position (as in n-gram models).
+
 
 
 
