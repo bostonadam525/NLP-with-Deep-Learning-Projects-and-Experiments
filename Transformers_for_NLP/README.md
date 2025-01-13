@@ -274,6 +274,7 @@ These are the multiple values and layers of Q,K,V
 ![image](https://github.com/user-attachments/assets/d8982efd-9e33-460e-bb5a-b0275c61cc62)
 
 
+
 ## Multi-head attention Q, K, V vector spaces
 * Multiple vector space dimensions are produced from the multiple linear transformations (feed forward networks) via scaled-dot product
 * [This is an excellent blog post that explains this in detail with code](https://data-science-blog.com/blog/2021/04/07/multi-head-attention-mechanism/)
