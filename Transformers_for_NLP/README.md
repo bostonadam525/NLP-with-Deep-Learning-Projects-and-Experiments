@@ -168,6 +168,25 @@ These are the multiple values and layers of Q,K,V
 6. K,V
 
 
+## Similarity between encoder and decoder stacks
+* tokenized text —> token encodings (numeric vectors) —> token embeds + positional embeds 
+* Difference is that one is fed to encoder stack, the other fed to decoder stack
+
+
+## Decoder stack
+* Receives K,V pairs from encoder
+   * —> hidden states
+   * —> classification head
+      * multi-class classification
+      * probability of each token belonging to each class
+      * goal is to predict next token or tokens
+   * —> token predictions
+      * result of classification head decoding raw logit probabilities 
+   * —> output tokens
+   * passed back to tokenzed text —> token encodings —> token embeds + positional embeds 
+      * Text is presented as numeric vector encodings 
+   * —> decoder stack…..back to hidden states…repeat 
+
 
 
 
