@@ -259,6 +259,21 @@ These are the multiple values and layers of Q,K,V
   * Text-to-Speech: Generating speech from text, where the input is text and the output is speech.
 
 
-  
 
 
+# Multi-head attention
+* apply attention multiple times or iterations
+* allows a model to learn multiple aspects of contextual and semantic relationships between words. 
+* Same multi-head attention used in encoder and decoder networks
+* In the original paper “Attention is all you need” multi-head attention was used 8 times, thus 8 iterations. 
+   * The concept was to have multiple learned linear transformations (feed forward neural networks) of input Q, K, V with attention performed in parallel.
+   * From the original paper: *In this work we employ h = 8 parallel attention layers, or heads. For each of these we use dk = dv =dmodel/h = 64. Due to the reduced dimension of each head, the total computational cost is similar to that of single-head attention with full dimensionality.* ~Attention is All You Need
+* Then lastly, the final concatenation with scaled-dot product attention
+* This is a great representation of this:
+
+![image](https://github.com/user-attachments/assets/d8982efd-9e33-460e-bb5a-b0275c61cc62)
+
+
+## Multi-head attention Q, K, V vector spaces
+* Multiple vector space dimensions are produced from the multiple linear transformations (feed forward networks) via scaled-dot product
+* [This is an excellent blog post that explains this in detail with code](https://data-science-blog.com/blog/2021/04/07/multi-head-attention-mechanism/)
