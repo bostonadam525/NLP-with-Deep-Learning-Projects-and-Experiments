@@ -153,6 +153,19 @@ These are the multiple values and layers of Q,K,V
 
 
 
+# Transformers with encoding and decoding stacks
+
+## Encoder stack - Flow
+1. tokenized text
+2. token encodings (numerical vectors)
+3. token embedding vectors + positional embeds
+  * **Generic vectors**
+4. encoder stack
+  * multiple encoders stacked on each other
+  * Multi-head attention network (many single attention networks in parallel)
+5. final hidden states
+  * **Contextual vectors**
+6. K,V
 
 
 
