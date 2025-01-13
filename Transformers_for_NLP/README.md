@@ -189,6 +189,9 @@ These are the multiple values and layers of Q,K,V
 
 
 
+* Full Encoder-Decoder Architecture - [source](https://vitalflux.com/transformer-architecture-types-explained-with-examples/)
+
+![image](https://github.com/user-attachments/assets/3fd1ce00-c6d8-4465-9fbe-446a1acfc5fc)
 
 
 
