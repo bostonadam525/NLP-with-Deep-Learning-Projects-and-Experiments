@@ -219,14 +219,44 @@ These are the multiple values and layers of Q,K,V
 # What are the 3 Attention types in Transformers?
 1. **Self-Attention**
   * attention between inputs only —> “self-attention”
-  * Queries, keys, values in the same input sentence. 
+  * Queries, keys, values come from the same input sentence.
+  * Meaning of each word within a sentence is encoded in self-attention.
+  * Attention of a word to itself = 1
 
 2. **Masked-Self Attention**
   * attention in decoder output but only in previously generated tokens —> “masked-self attention"
+  * Q, K, V come from the same sentence. Queries don't attend to future positions.
+  * 1) Used in decoder transformers to predict transformer outputs
+       * If have tokens 1, 2, 3 we want to predict 4
+       * Attention comes from tokens 1, 2, 3 (previous tokens)
+* 2) Causal modeling to avoid data leaks 
+
+
 
 3. **Cross-Attention (encoder-decoder attention)**
-   * attention between input and output 
+   * attention between input and output
+   * Queries from one sentence, keys and values from another. 
+     1) mostly used in translation tasks
+     2) Cross attention —> translation across the matrix
+   * Key differences between self-attention and cross-attention
+       * Self-attention works on a single sequence by generating contextual embeddings for its tokens.
+       * Cross attention handles two sequences at once.
+           * For example, in machine translation, if we are translating the sentence “We are friends” from English to Hindi, cross attention takes both the input sequence (“We are friends”) and the output sequence (“हम दोस्त हैं”) to establish the relationships between these sequences.
+           * It computes how strongly each word in the English sentence relates to each word in the Hindi sentence.
 
+![image](https://github.com/user-attachments/assets/4c27f759-bdd0-4e18-bda5-e7946559e674)
+
+* In self-attention, we only need to pass one sequence as input, but for cross attention, we pass both sequences, the source and the target, making this the first point of difference between the two mechanisms. --> [source](https://medium.com/@sachinsoni600517/cross-attention-in-transformer-f37ce7129d78)
+
+
+
+
+* **Applications of cross-attention**
+  * Machine Translation: Translating text from one language to another involves comparing and aligning words between the source and target languages.
+  * Question Answering: Determining which parts of the context are relevant to answer a given question.
+  * Image Captioning: Generating descriptive text for images, where the image and text are treated as different modalities.
+  * Text-to-Image Generation: Creating images based on textual descriptions.
+  * Text-to-Speech: Generating speech from text, where the input is text and the output is speech.
 
 
   
