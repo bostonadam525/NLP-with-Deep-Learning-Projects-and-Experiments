@@ -160,12 +160,32 @@ These are the multiple values and layers of Q,K,V
 2. token encodings (numerical vectors)
 3. token embedding vectors + positional embeds
   * **Generic vectors**
+  * Positional Encoding
+     * Very little variation
+     * Sinusoidal function
+     * Ordered position information
 4. encoder stack
   * multiple encoders stacked on each other
   * Multi-head attention network (many single attention networks in parallel)
 5. final hidden states
   * **Contextual vectors**
 6. K,V
+
+### Encoder Layer
+* 3 main inputs
+
+1. Query
+2. Key
+3. Value
+
+* Inputs to multi-head attention layer
+   * Self Attention
+* Multiple feed forward networks
+* Output 
+
+
+![image](https://github.com/user-attachments/assets/ed8c3940-282b-437b-85e7-b3e425e14925)
+
 
 
 ## Similarity between encoder and decoder stacks
@@ -187,6 +207,7 @@ These are the multiple values and layers of Q,K,V
       * Text is presented as numeric vector encodings 
    * —> decoder stack…..back to hidden states…repeat 
 
+![image](https://github.com/user-attachments/assets/e2676410-1407-463e-a190-b5461b2df7aa)
 
 
 * Full Encoder-Decoder Architecture - [source](https://vitalflux.com/transformer-architecture-types-explained-with-examples/)
@@ -195,6 +216,16 @@ These are the multiple values and layers of Q,K,V
 
 
 
+# What are the 3 Attention types in Transformers?
+1. **Self-Attention**
+  * attention between inputs only —> “self-attention”
+  * Queries, keys, values in the same input sentence. 
+
+2. **Masked-Self Attention**
+  * attention in decoder output but only in previously generated tokens —> “masked-self attention"
+
+3. **Cross-Attention (encoder-decoder attention)**
+   * attention between input and output 
 
 
 
