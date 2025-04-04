@@ -26,6 +26,11 @@
 
 2. PyTorch Tabular
   * https://github.com/manujosephv/pytorch_tabular
-3. Mamba Deep Learning for Tabular Data
+
+3. PyTorch Frame
+   * https://github.com/pyg-team/pytorch-frame
+
+
+4. Mamba Deep Learning for Tabular Data
   * https://github.com/basf/mamba-tabular
   * https://mambular.readthedocs.io/en/latest/index.html
