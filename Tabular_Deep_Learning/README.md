@@ -34,3 +34,7 @@
 4. Mamba Deep Learning for Tabular Data
   * https://github.com/basf/mamba-tabular
   * https://mambular.readthedocs.io/en/latest/index.html
+
+
+5. TabPFN
+* github: https://github.com/PriorLabs/TabPFN
